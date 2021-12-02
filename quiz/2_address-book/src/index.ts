@@ -99,3 +99,14 @@ class AddressBook {
 }
 
 new AddressBook();
+
+
+var div = document.querySelector('div'); // HTMLDivElement | null 로 추론됨
+
+if (div) {
+  div.innerText; // div 는 null일 수도 있음
+}
+
+var div = document.querySelector('.container') as HTMLDivElement // Div Element 타입으로 단언
+
+
