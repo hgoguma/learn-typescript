@@ -1,3 +1,10 @@
+// 라이브러리 로딩
+// import 변수명 from '라이브러리 이름'
+// 변수, 함수 import 문법
+// import {} from '파일 상대 경로'
+import axios, { AxiosResponse } from 'axios';
+import { Chart } from 'chart.js'; // >> chart.js 바로 못가져옴 >> 타입 정의 필요
+
 // utils
 // DOM을 가져오기 위한 util 함수
 function $(selector: string) {
@@ -39,11 +46,20 @@ function createSpinnerElement(id: string) {
 let isDeathLoading = false;
 const isRecoveredLoading = false;
 
+interface CovidSummaryResponse {
+  Countries: any[];
+  Date: string;
+  Global: object;
+  Message: string;
+}
+
 // api
-function fetchCovidSummary() {
+function fetchCovidSummary(): Promise<AxiosResponse<CovidSummaryResponse>> {
   const url = 'https://api.covid19api.com/summary';
   return axios.get(url);
 }
+
+// fetchCovidSummary().then(res => )
 
 enum CovidStatus {
   Confirmed = 'confirmed',
@@ -200,7 +216,7 @@ function renderChart(data: any, labels: any) {
 }
 
 function setChartData(data: any) {
-  const chartData = data.slice(-14).map(value => value.Cases);
+  const chartData = data.slice(-14).map((value: any) => value.Cases);
   const chartLabel = data
     .slice(-14)
     .map((value: any) =>
