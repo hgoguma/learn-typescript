@@ -24,6 +24,8 @@
 4. 외부 라이브러리 모듈화
   - @/types가 정의 되지 않은 경우 tsconfig.json에 typeRoots 디렉토리 설정 후 해당 디렉토리에 타입 선언
 
+5. `strict` 옵션 추가 후 타입 정의
+
 ## 참고 자료
 
 - [존스 홉킨스 코로나 현황](https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6)
